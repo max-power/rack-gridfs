@@ -14,8 +14,8 @@ module Rack
 
         def default_options
           super.merge({
-            :hostname => 'localhost',
-            :port     => Mongo::Connection::DEFAULT_PORT
+            :hostname => Mongo::MongoClient::DEFAULT_HOST,
+            :port     => Mongo::MongoClient::DEFAULT_PORT
           })
         end
 
@@ -29,7 +29,7 @@ module Rack
           database = nil
 
           Timeout::timeout(5) do
-            database = Mongo::Connection.new(@hostname, @port).db(@database)
+            database = Mongo::MongoClient.new(@hostname, @port).db(@database)
             database.authenticate(@username, @password) if @username
           end
 
