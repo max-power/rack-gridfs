@@ -19,6 +19,7 @@ class Rack::GridFSTest < Test::Unit::TestCase
       file2 = Mongo::GridFileSystem.new(db).open('3wolfmoon.jpg', "r")
       file3 = Mongo::Grid.new(db).get(BSON::ObjectId.from_string(image_id.to_s))
 
+      assert_equal file1.filename, "3wolfmoon.jpg"
       assert_equal file1.filename, file2.filename
       assert_equal file2.filename, file3.filename
     end
@@ -39,6 +40,7 @@ class Rack::GridFSTest < Test::Unit::TestCase
 
       teardown do
         db.collection('fs.files').remove
+        db.collection('fs.chunks').remove
       end
 
       should "return TXT files stored in GridFS" do
@@ -77,6 +79,7 @@ class Rack::GridFSTest < Test::Unit::TestCase
 
       teardown do
         db.collection('fs.files').remove
+        db.collection('fs.chunks').remove
       end
 
       should "return TXT files stored in GridFS" do
@@ -123,6 +126,7 @@ class Rack::GridFSTest < Test::Unit::TestCase
 
       teardown do
         db.collection('fs.files').remove
+        db.collection('fs.chunks').remove
       end
 
       should "return TXT files stored in GridFS" do
@@ -149,6 +153,7 @@ class Rack::GridFSTest < Test::Unit::TestCase
 
       teardown do
         db.collection('fs.files').remove
+        db.collection('fs.chunks').remove
       end
 
       should "return TXT files stored in GridFS" do

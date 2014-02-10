@@ -15,11 +15,11 @@ Gem::Specification.new do |s|
   s.rubyforge_project         = "rack-gridfs"
 
   s.add_dependency('rack')
-  s.add_dependency('mongo', '~> 1.2')
+  s.add_dependency('mongo', '~> 1.9.2')
   s.add_dependency('mime-types')
 
-  s.add_development_dependency('bundler', '>= 1.0.0')
-  s.add_development_dependency('mocha', '0.9.12')
+  s.add_development_dependency('bundler', '~> 1.5.3')
+  s.add_development_dependency('mocha', '~> 1.0.0')
   s.add_development_dependency('rack-test')
   s.add_development_dependency('rake')
   s.add_development_dependency('shoulda')

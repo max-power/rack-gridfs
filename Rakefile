@@ -24,7 +24,7 @@ end
 
 task :default => :test
 
-require 'rake/rdoctask'
+require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
   require File.expand_path("../lib/rack/gridfs/version", __FILE__)
 

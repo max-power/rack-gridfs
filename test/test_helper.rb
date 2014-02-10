@@ -1,6 +1,6 @@
 require 'test/unit'
 require 'shoulda'
-require 'mocha'
+require 'mocha/test_unit'
 
 require 'rack/builder'
 require 'rack/mock'
@@ -29,7 +29,7 @@ module Rack
         end
 
         def db
-          @db ||= Mongo::Connection.new(test_database_options[:hostname], test_database_options[:port]).db(test_database_options[:database])
+          @db ||= Mongo::MongoClient.new(test_database_options[:hostname], test_database_options[:port]).db(test_database_options[:database])
         end
 
         def setup_middleware(opts={})
